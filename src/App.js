@@ -9,6 +9,9 @@ function App() {
   const [emailIsValid,setEmailIsValid] = useState(false)
   const [passwordIsValid,setPasswordIsValid] = useState(false)
   const [isSubmited,setIsSubmited] = useState(false)
+  const [firstName,setFirstName] = useState("")
+  const [lastName,setLastName] = useState("")
+
 
   const handleEmailChange = (e) =>{
     setEmail(e.target.value)
@@ -50,11 +53,42 @@ function App() {
     }
   }
 
+  const handleFirstNameChange = e =>{
+    setFirstName(e.target.value)
+  }
+
+  const handleLastNameChange = e =>{
+    setLastName(e.target.value)
+  }
+
   return (
     <>
-    {isSubmited ? <div><p>Welcom <span>{email}</span> </p> </div> : <div className="App">
+    {isSubmited ? 
+    <div><p>Welcom <span>{firstName} {lastName}</span> your conected with mail: <span>{email}</span> </p> </div> 
+    : 
+    <div className="App">
     <h1>Login</h1>
     <form onSubmit={handleSubmit}>
+       {/*Name */}
+
+       <div className="row">
+
+{/* Firstname */}
+
+
+    <div className="col-md-6 mb-3">
+      <label htmlFor="validationCustom01">First name</label>
+      <input type="text" className="form-control" id="validationCustom01" placeholder="First name..." required onChange={handleFirstNameChange}/>
+
+{/* LastName */}
+
+    </div>
+    <div className="col-md-6 mb-3">
+      <label htmlFor="validationCustom02">Last name</label>
+      <input type="text" className="form-control" id="validationCustom02" placeholder="Last name..." required onChange={handleLastNameChange}/>
+    </div>
+</div>
+
 <div className="mb-3">
   <label for="exampleInputEmail1" className="form-label">Email address</label>
   <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleEmailChange}/>
